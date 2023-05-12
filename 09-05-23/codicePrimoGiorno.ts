@@ -51,7 +51,7 @@ class Hobby {
   constructor(hobbyInput: string) {
     this.hobby = hobbyInput;
     this.frequenza = 4;
-    this.costo = 25;
+    this.costo = 24;
   }
 }
 

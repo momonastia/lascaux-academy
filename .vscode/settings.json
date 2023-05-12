@@ -1,0 +1,5 @@
+{
+    "files.autoSave": "onFocusChange",
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true
+}
