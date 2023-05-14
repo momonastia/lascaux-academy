@@ -1,3 +1,3 @@
 ﻿# lascaux-academy
  
- Repository created for learning purposes (TypeScrypt, Angular)
+ Repository created for learning purposes (TypeScript, Angular)
