@@ -1,3 +1,5 @@
-<h3>Product</h3>
-
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea similique tempore velit qui dolore, voluptatum reprehenderit libero iste tempora vero ipsum cupiditate veniam, aspernatur atque error impedit eaque odit expedita?</p>
+<div>
+  <img [src]="product.image" [alt]="product.title" />
+  <h3>{{ product.title }}</h3>
+  <p>Price: {{product.price | currency }}</p>
+</div>
