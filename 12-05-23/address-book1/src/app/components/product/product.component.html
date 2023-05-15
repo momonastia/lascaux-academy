@@ -2,4 +2,13 @@
   <img [src]="product.image" [alt]="product.title" />
   <h3>{{ product.title }}</h3>
   <p>Price: {{product.price | currency }}</p>
+  <button (click)="onHandleClick()" [ngClass]="{
+    'btn-blueviolet' : !details,
+    'btn-greenyellow' : details
+  }">
+  {{details? "Hide" : "Show"}} details</button>
+<div *ngIf="details">
+  <p>{{product.description}}</p>
+  <p>Rate: {{product.rating.rate}}</p>
+</div>
 </div>
