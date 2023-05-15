@@ -25,4 +25,8 @@ export class ContactListComponent {
     return firstName.toLocaleLowerCase()==="eleonora"
   }
 
+
+  changeBackgroundForAll() {
+
+  }
 }
