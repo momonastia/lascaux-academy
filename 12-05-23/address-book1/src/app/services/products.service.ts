@@ -9,12 +9,12 @@ export class ProductService {
   constructor (private http: HttpClient) {
 
   }
+  configUrl = 'https://fakestoreapi.com/products';
+  getAll(){
 
-  /* getAll(){
-    return this.http.get(url: 'https://fakestoreapi.com/products')
-    }*/
+    return this.http.get(this.configUrl);
 
-    }
-
+  }
+}
 
 
