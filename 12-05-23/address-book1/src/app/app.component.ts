@@ -30,5 +30,14 @@ export class AppComponent {
       phonePrefix: "+39"
     }
   ];
+
+selectedContact: Contact | null | undefined;
+
+onSelectedContact($event: Contact){
+  this.selectedContact=$event;
+}
+
+/* onBackToContactList */
+
   products: IProduct[] = data;
 }
