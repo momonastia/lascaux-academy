@@ -1,4 +1,4 @@
-<button (click)="changeBackground()">Cambia colore</button>
+<button class="btn btn-primary" (click)="changeBackgroundToAllElements()">Cambia colore sfondo</button>
 <div class="container">
     <h2 *ngIf="false">Lista di contatti</h2>
     <ul class="list-group">
@@ -20,11 +20,12 @@
         <p> {{ contacts[2].phonePrefix }} {{ contacts[2].phoneNumber }}</p>
       </div>
   </li> -->
-<li class="list-group-item" *ngFor="let contact of contacts">
+<li class="list-group-item" *ngFor="let contact of contacts" [ngStyle]="{'background': background}">
   <div class="d-flex justify-content-between align-items-center">
     <p>{{contact.firstName | userInitials: contact.lastName}}</p>
     <p> {{ contact.firstName }} {{ contact.lastName }} </p>
     <p> {{ contact.phonePrefix }} {{ contact.phoneNumber }}</p>
+    <button class="btn btn-primary" (click)="showDetails(contact)">Details</button>
   </div>
 </li>
 </ul>

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Contact } from '../models/contact.module';
 
 @Component({
@@ -13,7 +13,11 @@ export class ContactListComponent implements OnChanges {
 
   @Input() contacts: Contact[] = [];
 
+  @Output() selectedContactEvent: EventEmitter<Contact> = new EventEmitter<Contact>();
+
   backgroundForFirstContact: string = "yellow"
+
+  background: string = "white"
 
   changeBackground() {
     if(this.backgroundForFirstContact === "yellow"){
@@ -29,7 +33,17 @@ export class ContactListComponent implements OnChanges {
   }
 
 
-  changeBackgroundForAll() {
-
+  changeBackgroundToAllElements() {
+    if (this.background === "white") {
+       this.background = "lightgreen"
+    }else {
+      this.background = "white"
+    }
   }
+
+  showDetails(contact: Contact){
+    console.log(contact)
+    this.selectedContactEvent.emit(contact)
+  }
+
 }
