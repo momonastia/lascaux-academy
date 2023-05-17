@@ -1,17 +1,20 @@
 <h2>{{title | titlecase }}</h2>
 
-<app-contact-list *ngIf="!selectedContact"
+<app-contact-list *ngIf="!selectedContact; else ContactDetails"
  [contacts]="contacts"
  (selectedContactEvent)="onSelectedContact($event)"
  >
 </app-contact-list>
-<app-contact-details *ngIf="selectedContact" (backToContactListEvent)="onBackToContactList()"></app-contact-details>
+<!-- <app-contact-details *ngIf="selectedContact" (backToContactListEvent)="onBackToContactList()"></app-contact-details> -->
 
 <!-- template reference variable -->
 
-<!-- <ng-template #ContactDetails>
-  <app-contact-details></app-contact-details>
-</ng-template> -->
+<ng-template #ContactDetails>
+  <app-contact-details
+      [selectedContactForDetails] = "selectedContact"
+      (backToContactListEvent)="onBackToContactList()">
+  </app-contact-details>
+</ng-template>
 
 <!-- <app-product [product]="products[0]"></app-product>
 <app-product [product]="products[1]"></app-product> -->

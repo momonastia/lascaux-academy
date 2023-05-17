@@ -8,6 +8,8 @@ import { Contact } from '../models/contact.module';
 })
 export class ContactDetailsComponent {
 
+  @Input('selectedContactForDetails') selectedContact: Contact | null | undefined;
+
   @Output() backToContactListEvent : EventEmitter<void> = new EventEmitter<void>();
 
   backToContactList(){
