@@ -1,11 +1,12 @@
-<button class="btn btn-primary" (click)="backToContactList()">Torna alla lista</button>
+<button class="btn btn-secondary m-4" (click)="backToContactList()">Torna alla lista</button>
 
 <div class="container">
   <h2>Dettagli</h2>
-  <div class="card">
+  <div class="card bg-dark text-light">
     <div class="card-body">
-      <!-- <h5 class="card-title">{{ selectedContact?firstName }} {{ selectedContact?lastName }}</h5>
-      <p><strong>Numero di telefono:</strong>{{ selectedContact?phonePrefix }} {{ selectedContact?phoneNumber }}</p> -->
+      <h5 class="card-title">{{ selectedContact?.firstName }} {{ selectedContact?.lastName }}</h5>
+      <p class="card-text">Numero di telefono: {{ selectedContact?.phonePrefix }} {{ selectedContact?.phoneNumber }}</p>
+      <p class="card-text">Email: {{ selectedContact?.email }}</p>
     </div>
   </div>
 </div>
