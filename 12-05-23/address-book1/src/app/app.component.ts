@@ -8,7 +8,7 @@ import { ProductService } from './services/products.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent /* implements OnInit  */{
 
   title = 'address-book';
 
@@ -42,6 +42,12 @@ onSelectedContact($event: Contact){
   this.selectedContact = $event;
 }
 
+onBackToContactList(){
+  if(this.selectedContact){
+    this.selectedContact = null;
+  }
+}
+
 /* Product part */
 
   /* products: IProduct[] = data; */
@@ -51,8 +57,8 @@ onSelectedContact($event: Contact){
 
   }
 
-  ngOnInit(): void {
+/*   ngOnInit(): void {
     throw new Error('Method not implemented.');
     this.ProductService
-  }
+  } */
 }
