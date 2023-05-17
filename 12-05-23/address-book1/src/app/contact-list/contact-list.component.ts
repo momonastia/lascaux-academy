@@ -6,10 +6,10 @@ import { Contact } from '../models/contact.module';
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnChanges {
-  ngOnChanges(changes: SimpleChanges): void {
+export class ContactListComponent /* implements OnChanges */ {
+  /* ngOnChanges(changes: SimpleChanges): void {
     throw new Error('Method not implemented.');
-  }
+  } */
 
   @Input() contacts: Contact[] = [];
 
