@@ -35,7 +35,7 @@ export class ContactListComponent /* implements OnChanges */ {
 
   changeBackgroundToAllElements() {
     if (this.background === "white") {
-       this.background = "lightgreen"
+       this.background = "lightgrey"
     }else {
       this.background = "white"
     }
