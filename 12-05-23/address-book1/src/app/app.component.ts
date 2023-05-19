@@ -1,42 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './models/product';
 import { Contact } from './models/contact.module';
-import { ProductService } from './services/products.service';
+import { ContactsService } from './services/retrieve-contacts.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent /* implements OnInit  */{
+export class AppComponent implements OnInit {
 
   title = 'address-book';
 
-  contacts: Contact[] = [
-    {
-      firstName: "Giacomo",
-      lastName: "Piantini",
-      phoneNumber: "57824352364",
-      phonePrefix: "+39",
-      email: "giacomopiantini@gmail.com"
-    },
-    {
-      firstName: "Eleonora",
-      lastName: "Castro",
-      phoneNumber: "3456345",
-      phonePrefix: "+39",
-      email: "eleonoracastro@gmail.com"
-    },
-    {
-      firstName: "Laura",
-      lastName: "Saporoso",
-      phoneNumber: "4734657",
-      phonePrefix: "+39",
-      email: "laurasaporoso@gmail.com"
-    }
-  ];
+  contacts: Contact[] = [];
+  contactsSubscription: Subscription = new Subscription();
+  selectedContact: Contact | null | undefined;
 
-selectedContact: Contact | null | undefined;
+constructor(private ContactsService: ContactsService) {}
+
+ngOnInit(): void {
+  console.log("OnInit è implementato");
+  console.log("Procedo a recuperrare i contatti da json");
+  this.contactsSubscription = this.ContactsService
+  .getContactsFromJson()
+  .subscribe({
+    next: (contactsFromService: Contact[]) => (this.contacts = [...contactsFromService]),
+  });
+}
 
 onSelectedContact($event: Contact){
   this.selectedContact = $event;
@@ -48,17 +39,15 @@ onBackToContactList(){
   }
 }
 
+ngOnDestroy(): void {
+  console.log("OnDestroy è implementato");
+  this.contactsSubscription.unsubscribe();
+}
+
+
 /* Product part */
 
   /* products: IProduct[] = data; */
   products: IProduct[] = [];
 
-  constructor(private ProductService: ProductService){
-
-  }
-
-/*   ngOnInit(): void {
-    throw new Error('Method not implemented.');
-    this.ProductService
-  } */
 }
