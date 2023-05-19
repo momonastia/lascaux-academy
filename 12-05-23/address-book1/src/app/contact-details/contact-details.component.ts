@@ -18,7 +18,8 @@ export class ContactDetailsComponent implements OnInit  {
     this.backToContactListEvent.emit();
   }
 
-  convertedText: string;
+  convertedFisrstName: string;
+  convertedLastName: string;
   convertedDate: string;
 
   constructor(private utilitiesService: UtilitiesService) {}
@@ -30,7 +31,8 @@ export class ContactDetailsComponent implements OnInit  {
 
   convertText(){
     if (this.selectedContact) {
-      this.convertedText = this.utilitiesService.toTitleCaseFunction(this.selectedContact.firstName);
+      this.convertedFisrstName = this.utilitiesService.toTitleCaseFunction(this.selectedContact.firstName);
+      this.convertedLastName = this.utilitiesService.toTitleCaseFunction(this.selectedContact.lastName);
     }
   }
 
