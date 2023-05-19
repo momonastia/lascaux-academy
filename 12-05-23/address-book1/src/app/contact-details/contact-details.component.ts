@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { Contact } from '../models/contact.module';
 import { UtilitiesService } from '../services/utilities.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-contact-details',

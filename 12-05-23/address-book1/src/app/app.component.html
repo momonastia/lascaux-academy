@@ -19,7 +19,9 @@
 <!-- <app-product [product]="products[0]"></app-product>
 <app-product [product]="products[1]"></app-product> -->
 
+<div class="d-flex flex-row overflow-auto">
 <app-product
 *ngFor="let product of products; let i = index"
 [product]="product">
 </app-product>
+</div>

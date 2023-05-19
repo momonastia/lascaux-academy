@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { Observable } from "rxjs";
+import { IProduct } from "../models/product";
 
 @Injectable ({
   providedIn: "root"
@@ -10,9 +12,9 @@ export class ProductService {
 
   }
   configUrl = 'https://fakestoreapi.com/products';
-  getAll(){
+  getAll(): Observable<IProduct[]>{
 
-    return this.http.get(this.configUrl);
+    return this.http.get<IProduct[]>(this.configUrl);
 
   }
 }
