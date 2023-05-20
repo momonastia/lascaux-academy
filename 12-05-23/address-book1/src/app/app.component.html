@@ -19,6 +19,8 @@
 <!-- <app-product [product]="products[0]"></app-product>
 <app-product [product]="products[1]"></app-product> -->
 
+<p *ngIf="loading" class="text-center text-lg">Loading...</p>
+
 <div class="d-flex flex-row overflow-auto">
 <app-product
 *ngFor="let product of products; let i = index"

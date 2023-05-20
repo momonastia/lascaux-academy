@@ -24,13 +24,17 @@ constructor(private contactsService: ContactsService, private productService: Pr
 ngOnInit(): void {
   console.log("OnInit è implementato");
   console.log("Procedo a recuperrare i contatti da json");
+
   this.contactsSubscription = this.contactsService
   .getContactsFromJson()
   .subscribe({
     next: (contactsFromService: Contact[]) => (this.contacts = [...contactsFromService]),
   });
+
+  this.loading = true
   this.productService.getAll().subscribe({next: products => {
     this.products = products;
+    this.loading = false;
   }})
 }
 
@@ -54,4 +58,5 @@ ngOnDestroy(): void {
 
  /*  products: IProduct[] = data; */
   products: IProduct[] = [];
+  loading = false
 }
