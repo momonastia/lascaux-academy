@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, delay } from "rxjs";
 import { IProduct } from "../models/product";
 
 @Injectable ({
@@ -14,7 +14,7 @@ export class ProductService {
   configUrl = 'https://fakestoreapi.com/products';
   getAll(): Observable<IProduct[]>{
 
-    return this.http.get<IProduct[]>(this.configUrl);
+    return this.http.get<IProduct[]>(this.configUrl).pipe(delay(2000))
 
   }
 }
