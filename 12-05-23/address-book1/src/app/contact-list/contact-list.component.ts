@@ -18,8 +18,6 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   /* @Output() selectedContactEvent: EventEmitter<Contact> = new EventEmitter<Contact>(); */
 
-  backgroundForFirstContact: string = "yellow"
-
   background: string = "white"
 
   constructor(private contactsService: ContactsService, private productService: ProductService) {}
