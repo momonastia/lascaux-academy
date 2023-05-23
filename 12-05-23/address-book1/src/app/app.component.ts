@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './models/product';
 import { Contact } from './models/contact.module';
-import { ContactsService } from './services/retrieve-contacts.service';
-import { Subscription } from 'rxjs/internal/Subscription';
-import { ProductService } from './services/products.service';
 /* import {products as data} from "./data/products" */
 
 @Component({
@@ -11,32 +8,11 @@ import { ProductService } from './services/products.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'address-book';
 
-  contacts: Contact[] = [];
-  contactsSubscription: Subscription = new Subscription();
   selectedContact: Contact | null | undefined;
-
-constructor(private contactsService: ContactsService, private productService: ProductService) {}
-
-ngOnInit(): void {
-  console.log("OnInit è implementato");
-  console.log("Procedo a recuperrare i contatti da json");
-
-  this.contactsSubscription = this.contactsService
-  .getContactsFromJson()
-  .subscribe({
-    next: (contactsFromService: Contact[]) => (this.contacts = [...contactsFromService]),
-  });
-
-  this.loading = true
-  this.productService.getAll().subscribe({next: products => {
-    this.products = products;
-    this.loading = false;
-  }})
-}
 
 onSelectedContact($event: Contact){
   this.selectedContact = $event;
@@ -48,15 +24,9 @@ onBackToContactList(){
   }
 }
 
-ngOnDestroy(): void {
-  console.log("OnDestroy è implementato");
-  this.contactsSubscription.unsubscribe();
-}
-
-
 /* Product part */
 
- /*  products: IProduct[] = data; */
+/*  products: IProduct[] = data; */
   products: IProduct[] = [];
   loading = false
 }

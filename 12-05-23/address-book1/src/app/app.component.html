@@ -1,29 +1,32 @@
 <h2 class="m-2">{{title | titlecase }}</h2>
 
-<app-contact-list *ngIf="!selectedContact; else ContactDetails"
+<!-- <app-contact-list *ngIf="!selectedContact; else ContactDetails"
  [contacts]="contacts"
  (selectedContactEvent)="onSelectedContact($event)"
  >
-</app-contact-list>
+</app-contact-list> раскомментировать -->
+
 <!-- <app-contact-details *ngIf="selectedContact" (backToContactListEvent)="onBackToContactList()"></app-contact-details> -->
 
 <!-- template reference variable -->
 
-<ng-template #ContactDetails>
+<!-- <ng-template #ContactDetails>
   <app-contact-details
       [selectedContactForDetails] = "selectedContact"
       (backToContactListEvent)="onBackToContactList()">
   </app-contact-details>
-</ng-template>
+</ng-template> раскомментировать -->
 
 <!-- <app-product [product]="products[0]"></app-product>
 <app-product [product]="products[1]"></app-product> -->
 
-<p *ngIf="loading" class="text-center text-lg">Loading...</p>
-
+<!-- <p *ngIf="loading" class="text-center text-lg">Loading...</p> раскомментировать -->
+<!--
 <div class="d-flex flex-row overflow-auto">
 <app-product
 *ngFor="let product of products; let i = index"
 [product]="product">
 </app-product>
-</div>
+</div> раскомментировать -->
+
+<router-outlet></router-outlet>
