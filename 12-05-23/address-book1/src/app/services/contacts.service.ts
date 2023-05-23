@@ -15,5 +15,4 @@ export class ContactsService {
   public getContactsFromJson(): Observable<Contact[]> {
     return this.httpClient.get<Contact[]>('assets/json/contacts.json')
   }
-
 }
