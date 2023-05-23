@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Contact } from '../models/contact.module';
 import { UtilitiesService } from '../services/utilities.service';
 
@@ -7,14 +7,14 @@ import { UtilitiesService } from '../services/utilities.service';
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.css']
 })
-export class ContactDetailsComponent implements OnInit  {
+export class ContactDetailsComponent implements OnInit, OnDestroy {
 
-  @Input('selectedContactForDetails') selectedContact: Contact | null | undefined;
+  /* @Input('selectedContactForDetails')  */selectedContact: Contact | null | undefined;
 
-  @Output() backToContactListEvent : EventEmitter<void> = new EventEmitter<void>();
+  /* @Output() backToContactListEvent : EventEmitter<void> = new EventEmitter<void>(); */
 
   backToContactList(){
-    this.backToContactListEvent.emit();
+
   }
 
   convertedFisrstName: string;
@@ -39,6 +39,10 @@ export class ContactDetailsComponent implements OnInit  {
     if (this.selectedContact) {
       this.convertedDate = this.utilitiesService.dateFormatFunction(this.selectedContact.birthDate);
     }
+  }
+  
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 
 }
