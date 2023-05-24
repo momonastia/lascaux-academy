@@ -25,8 +25,10 @@
     <p>{{contact.firstName | userInitials: contact.lastName}}</p>
     <p> {{ contact.firstName }} {{ contact.lastName }} </p>
     <p> {{ contact.phonePrefix }} {{ contact.phoneNumber }}</p>
-    <button class="btn btn-secondary" (click)="showDetails(contact)">Details</button>
+    <button class="btn btn-secondary" (click)="showDetails(contact.id)">Details</button>
   </div>
 </li>
 </ul>
 </div>
+
+<router-outlet></router-outlet>

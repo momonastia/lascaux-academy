@@ -12,10 +12,12 @@ const routes: Routes = [
   {
     path: "contacts",
     component: ContactListComponent,
-  },
-  {
-    path: "contact/:id",
-    component: ContactDetailsComponent,
+    children: [
+      {
+        path: ":id",
+        component: ContactDetailsComponent,
+      },
+    ],
   },
   {
     path: "**",
