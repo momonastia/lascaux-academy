@@ -2,28 +2,16 @@
   {
     "id": 1,
     "firstName": "Giacomo",
-    "lastName": "Piantini",
-    "phoneNumber": "57824352364",
-    "phonePrefix": "+39",
-    "email": "giacomopiantini@gmail.com",
-    "birthDate": "1993-05-23"
+    "lastName": "Piantini"
   },
   {
     "id": 2,
     "firstName": "ELEONORA",
-    "lastName": "CasTRo",
-    "phoneNumber": "3456345",
-    "phonePrefix": "+39",
-    "email": "eleonoracastro@gmail.com",
-    "birthDate": "1993-05-23"
+    "lastName": "CasTRo"
   },
   {
     "id": 3,
     "firstName": "Laura",
-    "lastName": "Saporoso",
-    "phoneNumber": "4734657",
-    "phonePrefix": "+39",
-    "email": "laurasaporoso@gmail.com",
-    "birthDate": "1993-05-23"
+    "lastName": "Saporoso"
   }
 ]

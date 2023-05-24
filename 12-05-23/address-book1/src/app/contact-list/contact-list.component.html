@@ -1,6 +1,7 @@
 <button class="btn btn-secondary m-4" (click)="changeBackgroundToAllElements()">Cambia colore sfondo</button>
 <div class="container">
     <h2 *ngIf="false">Lista di contatti</h2>
+    <input #inputFilter type="text" placeholder="Filtra per nome">
     <ul class="list-group mt-4 bg-dark text-light">
       <!-- <li class="list-group-item" [ngStyle]="{'background': backgroundForFirstContact}">
           <div class="d-flex justify-content-between align-items-center">
@@ -24,7 +25,7 @@
   <div class="d-flex justify-content-between align-items-center">
     <p>{{contact.firstName | userInitials: contact.lastName}}</p>
     <p> {{ contact.firstName }} {{ contact.lastName }} </p>
-    <p> {{ contact.phonePrefix }} {{ contact.phoneNumber }}</p>
+   <!--  <p> {{ contact.phonePrefix }} {{ contact.phoneNumber }}</p> -->
     <button class="btn btn-secondary" (click)="showDetails(contact.id)">Details</button>
   </div>
 </li>
