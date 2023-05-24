@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Contact } from '../models/contact.module';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, debounceTime, fromEvent, map, filter, switchMap, startWith } from 'rxjs';
 import { ContactsService } from '../services/contacts.service';
 import { ProductService } from '../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,6 +17,8 @@ export class ContactListComponent implements OnInit, OnDestroy {
   contacts: Contact[] = [];
   contactsSubscription: Subscription = new Subscription();
 
+  @ViewChild("inputFilter", {static: true}) inputFilter!: ElementRef;
+
   /* @Output() selectedContactEvent: EventEmitter<Contact> = new EventEmitter<Contact>(); */
 
   background: string = "white"
@@ -28,14 +30,30 @@ export class ContactListComponent implements OnInit, OnDestroy {
     private productService: ProductService) {}
 
   ngOnInit(): void {
-    console.log("OnInit è implementato");
-    console.log("Procedo a recuperrare i contatti da json");
+    (
+      fromEvent(this.inputFilter.nativeElement, "keyup") as Observable<KeyboardEvent>)
+      .pipe(
+        debounceTime(1000),
+        filter(
+          (keyboardEvent) =>
+          (keyboardEvent.target as any).value.length >= 3 ||
+          (keyboardEvent.target as any).value.length === 0),
+        map((keyboardEvent) => (keyboardEvent.target as any).value),
+        startWith(""),
+        switchMap((inputValue: string) => {
+        return this.contactsService.getContactsFromJson(inputValue);
+      })
+        )
+     .subscribe((filteredContacts) => {
+        console.log(filteredContacts)
+        this.contacts = (filteredContacts)
+    })
 
-    this.contactsSubscription = this.contactsService
+  /*   this.contactsSubscription = this.contactsService
     .getContactsFromJson()
     .subscribe({
       next: (contactsFromService: Contact[]) => (this.contacts = [...contactsFromService]),
-    });
+    }); */
 
    /*  this.loading = true
     this.productService.getAll().subscribe({next: products => {

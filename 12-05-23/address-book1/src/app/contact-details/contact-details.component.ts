@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Contact } from '../models/contact.module';
+import { Contact, ContactDetails } from '../models/contact.module';
 import { UtilitiesService } from '../services/utilities.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ContactsService } from '../services/contacts.service';
-import { Subscription } from 'rxjs';
+import { Subscription, concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-contact-details',
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class ContactDetailsComponent implements OnInit, OnDestroy {
 
-  /* @Input('selectedContactForDetails')  */selectedContact!: Contact;
+  /* @Input('selectedContactForDetails')  */selectedContact!: ContactDetails;
 
   /* @Output() backToContactListEvent : EventEmitter<void> = new EventEmitter<void>(); */
 
@@ -33,16 +33,32 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private contactsService: ContactsService,
     private utilitiesService: UtilitiesService) {
-      this.retrieveCurrentId = this.activatedRoute.params.subscribe({
+      /* this.retrieveCurrentId = this.activatedRoute.params.subscribe({
         next: (params: Params) => {
           this.currentId = params['id'];
+          this.contactsService.getSingleContactsFromJson(this.currentId).subscribe({
+            next: (contactDetails) => {
+             this.selectedContact = contactDetails;
+            }
+          })
         },
-      });
+      }); */
+      this.retrieveCurrentId = this.activatedRoute.params.pipe(
+        concatMap((params: Params) => {
+          this.currentId = params['id'];
+          return this.contactsService.getSingleContactsFromJson(this.currentId)
+        })
+        ).subscribe({
+          next: (contactDetails: ContactDetails) => {
+            this.selectedContact = contactDetails;
+          }
+        })
+        
     }
 
   ngOnInit() {
     console.log("Attualmente current ID" + this.currentId);
-    this.contactsSubscription = this.contactsService
+    /* this.contactsSubscription = this.contactsService
     .getContactsFromJson()
     .subscribe({
       next: (contacts: Contact[]) => {
@@ -52,7 +68,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
           )!,
         };
       },
-    });
+    }); */
     this.convertText();
     this.convertBirthDate()
   }
