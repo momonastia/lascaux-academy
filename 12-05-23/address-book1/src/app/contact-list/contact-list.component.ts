@@ -3,6 +3,7 @@ import { Contact } from '../models/contact.module';
 import { Subscription } from 'rxjs';
 import { ContactsService } from '../services/contacts.service';
 import { ProductService } from '../services/products.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-list',
@@ -20,7 +21,11 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   background: string = "white"
 
-  constructor(private contactsService: ContactsService, private productService: ProductService) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private contactsService: ContactsService,
+    private productService: ProductService) {}
 
   ngOnInit(): void {
     console.log("OnInit è implementato");
@@ -47,9 +52,9 @@ export class ContactListComponent implements OnInit, OnDestroy {
     }
   }
 
-  showDetails(contact: Contact){
-    console.log(contact)
-
+  showDetails(contactId: number){
+    console.log(`L'ID del contatto selezionato è ${contactId}`);
+    this.router.navigate([contactId], { relativeTo: this.activatedRoute });
   }
 
   ngOnDestroy(): void {
