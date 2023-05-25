@@ -1,7 +1,10 @@
 <button class="btn btn-secondary m-4" (click)="changeBackgroundToAllElements()">Cambia colore sfondo</button>
+<button routerLink="/products" class="btn btn-secondary m-4">Go to products page</button>
+
 <div class="container">
     <h2 *ngIf="false">Lista di contatti</h2>
-    <input #inputFilter type="text" placeholder="Filtra per nome">
+    <input #inputFilter type="text" class="form-control" placeholder="Filtra per nome">
+    <hr/>
     <div *ngIf="loading" class="text-center text-lg">
       <div class="spinner-border text-light" role="status">
         <span class="visually-hidden">Loading...</span>
