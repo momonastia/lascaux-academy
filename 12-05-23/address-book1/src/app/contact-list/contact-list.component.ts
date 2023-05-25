@@ -67,7 +67,10 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   showDetails(contactId: number){
     console.log(`L'ID del contatto selezionato è ${contactId}`);
-    this.router.navigate([contactId], { relativeTo: this.activatedRoute });
+    this.router.navigateByUrl(`contact/${contactId}`, {
+      skipLocationChange: false,
+      onSameUrlNavigation: 'reload',
+    });
   }
 
   ngOnDestroy(): void {

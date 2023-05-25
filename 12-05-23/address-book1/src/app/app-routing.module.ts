@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
-import { ProductComponent } from './components/product/product.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { TypeCheckGuard } from './guards/type-check.guard';
 
 const routes: Routes = [
   {
@@ -14,12 +14,11 @@ const routes: Routes = [
   {
     path: "contacts",
     component: ContactListComponent,
-    children: [
-      {
-        path: ":id",
-        component: ContactDetailsComponent,
-      },
-    ],
+  },
+  {
+    path: "contact/:id",
+    canActivate: [TypeCheckGuard],
+    component: ContactDetailsComponent,
   },
   {
     path: "products",
