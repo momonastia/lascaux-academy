@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Contact, ContactDetails } from '../models/contact.module';
+import { ContactDetails } from '../models/contact.module';
 import { UtilitiesService } from '../services/utilities.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ContactsService } from '../services/contacts.service';
@@ -53,7 +53,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
             this.selectedContact = contactDetails;
           }
         })
-        
+
     }
 
   ngOnInit() {
