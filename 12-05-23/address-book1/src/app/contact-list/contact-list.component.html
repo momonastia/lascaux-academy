@@ -2,6 +2,11 @@
 <div class="container">
     <h2 *ngIf="false">Lista di contatti</h2>
     <input #inputFilter type="text" placeholder="Filtra per nome">
+    <div *ngIf="loading" class="text-center text-lg">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <ul class="list-group mt-4 bg-dark text-light">
       <!-- <li class="list-group-item" [ngStyle]="{'background': backgroundForFirstContact}">
           <div class="d-flex justify-content-between align-items-center">

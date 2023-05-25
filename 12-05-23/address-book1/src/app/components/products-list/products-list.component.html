@@ -1,7 +1,11 @@
 <h3 class="m-2">Products<h3>
 <!-- <app-product [product]="products[0]"></app-product>
 <app-product [product]="products[1]"></app-product> -->
-<p *ngIf="loading" class="text-center text-lg">Loading...</p>
+<div *ngIf="loading" class="text-center text-lg">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
 <div class="d-flex flex-row overflow-auto">
 <app-product
 *ngFor="let product of products; let i = index"
