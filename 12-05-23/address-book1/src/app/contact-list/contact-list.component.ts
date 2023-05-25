@@ -13,6 +13,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   contacts: Contact[] = [];
   contactsSubscription: Subscription = new Subscription();
+  loading = false;
 
   @ViewChild("inputFilter", {static: true}) inputFilter!: ElementRef;
 
@@ -27,6 +28,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     (
       fromEvent(this.inputFilter.nativeElement, "keyup") as Observable<KeyboardEvent>)
       .pipe(
@@ -44,6 +46,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
      .subscribe((filteredContacts) => {
         console.log(filteredContacts)
         this.contacts = (filteredContacts)
+        this.loading = false;
     })
 
   /*   this.contactsSubscription = this.contactsService
