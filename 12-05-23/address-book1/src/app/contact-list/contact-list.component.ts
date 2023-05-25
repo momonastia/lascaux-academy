@@ -2,7 +2,6 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { Contact } from '../models/contact.module';
 import { Observable, Subscription, debounceTime, fromEvent, map, filter, switchMap, startWith } from 'rxjs';
 import { ContactsService } from '../services/contacts.service';
-import { ProductService } from '../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,8 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit, OnDestroy {
-
-  /* @Input() contacts: Contact[] = []; */
 
   contacts: Contact[] = [];
   contactsSubscription: Subscription = new Subscription();
@@ -27,7 +24,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private contactsService: ContactsService,
-    private productService: ProductService) {}
+  ) {}
 
   ngOnInit(): void {
     (
@@ -55,11 +52,6 @@ export class ContactListComponent implements OnInit, OnDestroy {
       next: (contactsFromService: Contact[]) => (this.contacts = [...contactsFromService]),
     }); */
 
-   /*  this.loading = true
-    this.productService.getAll().subscribe({next: products => {
-      this.products = products;
-      this.loading = false;
-    }}) */
   }
 
   changeBackgroundToAllElements() {

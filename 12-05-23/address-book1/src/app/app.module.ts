@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { UserInitialsPipe } from './pipes/user-initials.pipe';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserInitialsPipe } from './pipes/user-initials.pipe';
     ProductComponent,
     ContactListComponent,
     ContactDetailsComponent,
-    UserInitialsPipe
+    UserInitialsPipe,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
