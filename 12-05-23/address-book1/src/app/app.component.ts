@@ -9,8 +9,4 @@ export class AppComponent {
 
   title = 'address-book';
 
-/* Product part */
-
-  products: IProduct[] = [];
-  loading = false
 }
