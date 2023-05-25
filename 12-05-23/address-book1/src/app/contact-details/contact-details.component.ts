@@ -21,7 +21,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
   contactsSubscription: Subscription = new Subscription();
 
   closeDetail(){
-
+    this.router.navigateByUrl('contacts');
   }
 
   convertedFisrstName: string;
