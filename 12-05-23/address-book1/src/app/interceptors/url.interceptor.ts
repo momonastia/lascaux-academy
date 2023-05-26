@@ -20,12 +20,14 @@ export class UrlInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<unknown>> {
     console.log(request.url)
 
+if (request.url.includes("contact")) {
+   /* concatenazione la path comune e la richiesta in corso */
+   const requestCopy = request.clone({
+    url: `assets/json/${request.url}`
+  });
 
-    /* concatenazione la path comune e la richiesta in corso */
-    const requestCopy = request.clone({
-      url: `assets/json/${request.url}`
-    });
-
-    return next.handle(requestCopy);
+  return next.handle(requestCopy);
+}
+   else return next.handle(request);
   }
 }
