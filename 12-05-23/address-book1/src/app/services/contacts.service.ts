@@ -14,7 +14,7 @@ export class ContactsService {
 
   public getContactsFromJson(inputSearch?: string): Observable<Contact[]> {
     return this.httpClient
-    .get<Contact[]>('assets/json/contacts.json')
+    .get<Contact[]>('contacts.json')
     .pipe(delay(5000),
       map((contacts: Contact[]) => {
 
@@ -24,6 +24,8 @@ export class ContactsService {
   }
 
   public getSingleContactsFromJson(id: number): Observable<ContactDetails> {
-    return this.httpClient.get<ContactDetails>('assets/json/contacts/' + id + '.json')
+    return this.httpClient.get<ContactDetails>('contacts/' + id + '.json')
   }
+
+
 }

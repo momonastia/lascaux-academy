@@ -14,6 +14,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/address-book1",
+            "allowedCommonJsDependencies": [
+              "lodash", "moment"
+           ],
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
