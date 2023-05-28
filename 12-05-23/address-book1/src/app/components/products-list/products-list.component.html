@@ -8,8 +8,12 @@
   </div>
 </div>
 <div class="d-flex flex-row overflow-auto">
-<app-product
-*ngFor="let product of products; let i = index"
+  <app-product
+*ngFor="let product of products$ |async; let i = index"
 [product]="product">
 </app-product>
+<!-- <app-product
+*ngFor="let product of products; let i = index"
+[product]="product">
+</app-product> -->
 </div>
