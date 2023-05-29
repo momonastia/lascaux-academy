@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable, delay, map } from 'rxjs';
+import { BehaviorSubject, Observable, delay, map } from 'rxjs';
 import { Contact, ContactDetails } from '../models/contact.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
+
+  private contacts$ = new BehaviorSubject<Contact[]>([])
 
   constructor(private httpClient: HttpClient) { }
 
@@ -27,5 +29,23 @@ export class ContactsService {
     return this.httpClient.get<ContactDetails>('contacts/' + id + '.json')
   }
 
+  saveNewContact(contact: ContactDetails): void {
+    this.contacts$.value.push()
+  }
+
+  getContacts(inputSearch?: string): Observable<Contact[]>{
+    return this.contacts$.asObservable().pipe(
+      delay(500),
+      map((contacts: Contact[]) => {
+        if(inputSearch){
+          return contacts.filter(c => c.firstName.toLowerCase().includes(inputSearch.toLowerCase()))
+        }
+        else {
+          return contacts
+        }
+      }
+      )
+    )
+  }
 
 }

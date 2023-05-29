@@ -4,6 +4,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { TypeCheckGuard } from './guards/type-check.guard';
+import { AddContactComponent } from './add-contact/add-contact.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: "products",
     component: ProductsListComponent,
+  },
+  {
+    path: "add-contact",
+    component: AddContactComponent,
   },
   {
     path: "**",

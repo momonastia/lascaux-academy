@@ -70,7 +70,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
       },
     }); */
     this.convertText();
-    this.convertBirthDate()
+    /* this.convertBirthDate() */
   }
 
   convertText(){
@@ -80,11 +80,11 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  convertBirthDate() {
+  /* convertBirthDate() {
     if (this.selectedContact) {
       this.convertedDate = this.utilitiesService.dateFormatFunction(this.selectedContact.birthDate);
     }
-  }
+  } */
 
   ngOnDestroy(): void {
     this.retrieveCurrentId.unsubscribe();
