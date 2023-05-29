@@ -14,6 +14,8 @@ import { HttpResponseInterceptor } from './interceptors/http-response.intercepto
 import { HeaderInterceptor } from './interceptors/header.interceptor';
 import { UrlInterceptor } from './interceptors/url.interceptor';
 import { TimeInterceptor } from './interceptors/time.interceptor';
+import { AddContactComponent } from './add-contact/add-contact.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { TimeInterceptor } from './interceptors/time.interceptor';
     ContactListComponent,
     ContactDetailsComponent,
     UserInitialsPipe,
-    ProductsListComponent
+    ProductsListComponent,
+    AddContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true},

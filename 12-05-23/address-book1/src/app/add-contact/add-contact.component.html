@@ -1,0 +1,68 @@
+<button class="btn btn-secondary m-4" (click)="backToMainPage()">Back to main page</button>
+
+<div style="width: 400px;" class="m-4">
+<form #contactForm="ngForm" (ngSubmit)="saveForm(contactForm)" >
+  <div class="mb-3">
+   <label for="name" class="form-label">First name</label>
+   <input #inputName="ngModel" id="name" class="col-sm-2 form-control" name="name" type="text" [(ngModel)]="newContact.firstName" required="">
+   <p *ngIf="inputName.dirty && inputName.errors?.['required']">Compilare</p>
+
+   <label for="lastName">Last name</label>
+   <input id="lastName" class="form-control" name="lastName" type="text" [(ngModel)]="newContact.lastName" required="">
+
+   <div class="form-check m-3">
+   <label for="genderMale" class="form-check-label">Male</label>
+   <input id="genderMale" class="form-check-input" name="gender" type="radio" value="M" [(ngModel)]="newContact.gender">
+   </div>
+   <div class="form-check m-3">
+   <label for="genderFemale" class="form-check-label">Female</label>
+   <input id="genderFemale" class="form-check-input" name="gender" type="radio" value="F" [(ngModel)]="newContact.gender">
+   </div>
+   <div class="form-check m-3">
+   <label for="genderNeutral" class="form-check-label">Neutral</label>
+   <input id="genderNeutral" class="form-check-input" name="gender" type="radio" value="N" [(ngModel)]="newContact.gender">
+   </div>
+
+   <label for="birthDate">Birth date</label>
+   <input id="birthDate" class="form-control" name="birthDate" type="date" [(ngModel)]="newContact.birthDate" required="">
+   <label for="eMail">Email</label>
+   <input id="eMail" class="form-control" name="eMail" type="text" [(ngModel)]="newContact.email" required="">
+   <label for="phonePrefix">Phone prefix</label>
+   <input id="phonePrefix" class="form-control" name="phonePrefix" type="text" [(ngModel)]="newContact.phonePrefix" required="">
+   <label for="phoneNumber">Phone number</label>
+   <input id="phoneNumber" class="form-control" name="phoneNumber" type="text" [(ngModel)]="newContact.phoneNumber" required="">
+
+
+   <div class="form-check m-3">
+   <label for="drivingLicence">Driving licence</label>
+   <input id="drivingLicence" class="form-check-input" name="drivingLicence" type="checkbox" [(ngModel)]="newContact.drivingLicence">
+   </div>
+
+   <div class="form-check m-3">
+    <label for="education">Education</label>
+    <select name="education" id="education" [(ngModel)]="newContact.education">
+      <option [ngValue]="0">Licenza media</option>
+      <option [ngValue]="1">Diploma</option>
+      <option [ngValue]="2">Laurea</option>
+    </select>
+    </div>
+
+   <button type="submit" class="btn btn-secondary m-4" [disabled]="contactForm.invalid">Save</button>
+  </div>
+</form>
+
+<div>
+touched:{{contactForm.touched}}
+</div>
+<div>
+  untouched:{{contactForm.untouched}}
+</div>
+<div>
+  pristine:{{contactForm.pristine}}
+</div>
+<div>
+  dirty:{{contactForm.dirty}}
+</div>
+
+<button type="reset" class="btn btn-danger m-4" (click)="contactForm.reset()">Reset</button>
+</div>
