@@ -16,6 +16,7 @@ import { UrlInterceptor } from './interceptors/url.interceptor';
 import { TimeInterceptor } from './interceptors/time.interceptor';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { FormsModule } from '@angular/forms';
+import { GlobalErrorComponent } from './components/global-error/global-error.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     ContactDetailsComponent,
     UserInitialsPipe,
     ProductsListComponent,
-    AddContactComponent
+    AddContactComponent,
+    GlobalErrorComponent
   ],
   imports: [
     BrowserModule,

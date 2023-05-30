@@ -25,9 +25,9 @@ export class HttpResponseInterceptor implements HttpInterceptor {
           if(error.status === 401) {
             alert('Unauthorized access!')
           }
-          else if(error.status === 404) {
+          /* else if(error.status === 404) {
             alert('Page Not Found!')
-          }
+          } */
         }
       }));
   }
