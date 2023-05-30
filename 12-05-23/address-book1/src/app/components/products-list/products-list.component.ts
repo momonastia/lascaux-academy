@@ -3,12 +3,22 @@ import { IProduct } from '../../models/product';
 import { ProductService } from '../../services/products.service';
 import { Observable, Subscription, tap } from 'rxjs';
 
+
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
+
+  /* passing "term" from child component filter-products for search-bar */
+
+  term: string = "";
+
+  onTermChange(term: string) {
+    this.term = term;
+  }
+
   /* products: IProduct[] = []; */
   productsSubscription: Subscription = new Subscription();
   loading = false
