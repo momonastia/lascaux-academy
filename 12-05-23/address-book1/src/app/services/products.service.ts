@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, delay, catchError, throwError } from "rxjs";
+import { Observable, delay, catchError, throwError, retry } from "rxjs";
 import { IProduct } from "../models/product";
 import { ErrorService } from "./error.service";
 
@@ -14,10 +14,12 @@ export class ProductService {
     private errorService: ErrorService
     ){
   }
-  configUrl = 'https://fakestoreapi.com/producs';
+  configUrl = 'https://fakestoreapi.com/products';
   getAll(): Observable<IProduct[]>{
 
-    return this.http.get<IProduct[]>(this.configUrl).pipe(delay(2000),
+    return this.http.get<IProduct[]>(this.configUrl)
+    .pipe(delay(2000),
+    retry(2),
     catchError(this.errorHandler.bind(this)))
   }
 
