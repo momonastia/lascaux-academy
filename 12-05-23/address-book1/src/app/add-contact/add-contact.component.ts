@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Contact, ContactDetails, Education } from '../models/contact.module';
 import { NgForm } from '@angular/forms';
+import { ContactsService } from '../services/contacts.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class AddContactComponent implements OnInit {
   newContact: ContactDetails
 
   constructor (
-    private location: Location
+    private location: Location,
+    private contactService: ContactsService
   ) {}
 
   ngOnInit(): void {
@@ -25,13 +27,10 @@ export class AddContactComponent implements OnInit {
     this.location.back()
   }
 
-
   saveForm(form: NgForm): void {
-    /* console.log(form.value) */
     this.newContact = form.value;
     this.newContact.birthDate = new Date(form.value.birthDate)
-  /*   this.newContact.education = +this.newContact.education */
-    console.log(this.newContact)
+    this.contactService.saveNewContact(this.newContact)
     this.resetForm();
   }
 

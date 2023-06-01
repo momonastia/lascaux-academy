@@ -1,106 +1,101 @@
-<button class="btn btn-secondary m-4" (click)="backToMainPage()">Back to main page</button>
-
+<!-- <button class="btn btn-secondary m-4" (click)="backToMainPage()">Back to main page</button>
+ -->
 <div style="width: 400px;" class="m-4">
 
- <form #contactForm="ngForm" (ngSubmit)="saveForm(contactForm)" >
+ <form [formGroup]="contactForm" (ngSubmit)="saveForm(contactForm.value)">
   <div class="mb-3">
    <label for="name" class="form-label">First name</label>
    <input
-     #inputName="ngModel"
      id="name"
+     formControlName="firstName"
      class="col-sm-2 form-control"
-     name="name" type="text"
-     [(ngModel)]="newContact.firstName"
-     required="">
-   <p *ngIf="inputName.dirty && inputName.errors?.['required']">Compilare</p>
+     type="text"
+     >
+   <p *ngIf="
+   contactForm.controls['firstName'].errors?.required">Compilare</p>
 
    <label for="lastName">Last name</label>
    <input
      id="lastName"
+     formControlName="lastName"
      class="form-control"
-     name="lastName"
      type="text"
-     [(ngModel)]="newContact.lastName"
-     required="">
+     >
 
    <div class="form-check m-3">
    <label for="genderMale" class="form-check-label">Male</label>
    <input
      id="genderMale"
+     formControlName="gender"
      class="form-check-input"
-     name="gender"
      type="radio"
      value="M"
-     [(ngModel)]="newContact.gender">
+    >
    </div>
    <div class="form-check m-3">
    <label for="genderFemale" class="form-check-label">Female</label>
    <input
      id="genderFemale"
+     formControlName="gender"
      class="form-check-input"
-     name="gender"
      type="radio"
      value="F"
-     [(ngModel)]="newContact.gender">
+    >
    </div>
    <div class="form-check m-3">
    <label for="genderNeutral" class="form-check-label">Neutral</label>
    <input
      id="genderNeutral"
+     formControlName="gender"
      class="form-check-input"
-     name="gender"
      type="radio"
      value="N"
-     [(ngModel)]="newContact.gender">
+    >
    </div>
 
    <label for="birthDate">Birth date</label>
    <input
      id="birthDate"
+     formControlName="birthDate"
      class="form-control"
-     name="birthDate"
      type="date"
-     [(ngModel)]="newContact.birthDate"
-     required="">
+     >
    <label for="eMail">Email</label>
    <input
      id="eMail"
+     formControlName="email"
      class="form-control"
-     name="eMail"
      type="text"
-     [(ngModel)]="newContact.email"
-     required="">
+     >
+     {{contactForm.controls["email"].errors | json }}
    <label for="phonePrefix">Phone prefix</label>
    <input
      id="phonePrefix"
+     formControlName="phonePrefix"
      class="form-control"
-     name="phonePrefix"
      type="text"
-     [(ngModel)]="newContact.phonePrefix"
-     required="">
+     >
    <label for="phoneNumber">Phone number</label>
    <input
     id="phoneNumber"
+    formControlName="phoneNumber"
     class="form-control"
-    name="phoneNumber"
     type="text"
-    [(ngModel)]="newContact.phoneNumber"
-    required="">
-
+    >
 
    <div class="form-check m-3">
    <label for="drivingLicence">Driving licence</label>
    <input
      id="drivingLicence"
+     formControlName="drivingLicence"
      class="form-check-input"
-     name="drivingLicence"
      type="checkbox"
-     [(ngModel)]="newContact.drivingLicence">
+     >
    </div>
 
    <div class="form-check m-3">
     <label for="education">Education</label>
-    <select name="education" id="education" [(ngModel)]="newContact.education">
+    <select name="education" id="education">
       <option [ngValue]="0">Licenza media</option>
       <option [ngValue]="1">Diploma</option>
       <option [ngValue]="2">Laurea</option>
@@ -126,3 +121,4 @@ touched:{{contactForm.touched}}
 
 <button type="reset" class="btn btn-danger m-4" (click)="contactForm.reset()">Reset</button>
 </div>
+

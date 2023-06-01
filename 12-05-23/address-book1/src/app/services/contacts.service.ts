@@ -10,7 +10,9 @@ export class ContactsService {
 
   private contacts$ = new BehaviorSubject<Contact[]>([])
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.contacts$.subscribe(console.log)
+  }
 
   /* metodo per simulare il recopero dati da back end */
 
@@ -30,7 +32,9 @@ export class ContactsService {
   }
 
   saveNewContact(contact: ContactDetails): void {
-    this.contacts$.value.push()
+    let currentContacts = this.contacts$.value;/// salva nella variabile currentContacts l'ultimo valore messo nel Observable
+    currentContacts.push(contact);
+    this.contacts$.next(currentContacts);
   }
 
   getContacts(inputSearch?: string): Observable<Contact[]>{
