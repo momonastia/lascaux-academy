@@ -15,7 +15,12 @@ export class CreateProductComponent {
     ])
   })
 
+  get title() {
+    return this.form.controls.title as FormControl
+  }
+
   submit(){
+    /* console.log(this.title) */
     console.log(this.form.value)
   }
 
