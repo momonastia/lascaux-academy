@@ -1,7 +1,8 @@
 <div class="modal fade show" style="display: block; background-color: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-     <h2 class="text-dark p-4">Title</h2>
+     <h4 class="text-dark p-4 text-center">{{ title | titlecase }}</h4>
+     <ng-content></ng-content>
     </div>
   </div>
 </div>
