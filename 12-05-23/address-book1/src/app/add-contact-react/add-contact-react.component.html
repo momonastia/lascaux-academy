@@ -22,7 +22,9 @@
      type="text"
      >
 
-   <div class="form-check m-3">
+    <div formGroupName="details">
+
+     <div class="form-check m-3">
    <label for="genderMale" class="form-check-label">Male</label>
    <input
      id="genderMale"
@@ -31,8 +33,8 @@
      type="radio"
      value="M"
     >
-   </div>
-   <div class="form-check m-3">
+     </div>
+     <div class="form-check m-3">
    <label for="genderFemale" class="form-check-label">Female</label>
    <input
      id="genderFemale"
@@ -41,8 +43,8 @@
      type="radio"
      value="F"
     >
-   </div>
-   <div class="form-check m-3">
+     </div>
+     <div class="form-check m-3">
    <label for="genderNeutral" class="form-check-label">Neutral</label>
    <input
      id="genderNeutral"
@@ -51,39 +53,39 @@
      type="radio"
      value="N"
     >
-   </div>
+     </div>
 
-   <label for="birthDate">Birth date</label>
-   <input
+     <label for="birthDate">Birth date</label>
+     <input
      id="birthDate"
      formControlName="birthDate"
      class="form-control"
      type="date"
      >
-   <label for="eMail">Email</label>
-   <input
+     <label for="eMail">Email</label>
+     <input
      id="eMail"
      formControlName="email"
      class="form-control"
      type="text"
      >
-     {{contactForm.controls["email"].errors | json }}
-   <label for="phonePrefix">Phone prefix</label>
-   <input
+     <!-- {{contactForm.controls["email"].errors | json }} -->
+     <label for="phonePrefix">Phone prefix</label>
+     <input
      id="phonePrefix"
      formControlName="phonePrefix"
      class="form-control"
      type="text"
      >
-   <label for="phoneNumber">Phone number</label>
-   <input
+     <label for="phoneNumber">Phone number</label>
+     <input
     id="phoneNumber"
     formControlName="phoneNumber"
     class="form-control"
     type="text"
-    >
+     >
 
-   <div class="form-check m-3">
+     <div class="form-check m-3">
    <label for="drivingLicence">Driving licence</label>
    <input
      id="drivingLicence"
@@ -91,16 +93,18 @@
      class="form-check-input"
      type="checkbox"
      >
-   </div>
+     </div>
 
-   <div class="form-check m-3">
+     <div class="form-check m-3">
     <label for="education">Education</label>
     <select name="education" id="education">
       <option [ngValue]="0">Licenza media</option>
       <option [ngValue]="1">Diploma</option>
       <option [ngValue]="2">Laurea</option>
     </select>
-    </div>
+     </div>
+
+  </div>
 
    <button type="submit" class="btn btn-secondary m-4" [disabled]="contactForm.invalid">Save</button>
   </div>
