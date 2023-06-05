@@ -22,6 +22,7 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { ModalComponent } from './components/modal/modal.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { AddContactReactComponent } from './add-contact-react/add-contact-react.component';
+import { FocusDirective } from './directives/focus.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { AddContactReactComponent } from './add-contact-react/add-contact-react.
     ModalComponent,
     CreateProductComponent,
 
-    AddContactReactComponent
+    AddContactReactComponent,
+      FocusDirective
   ],
   imports: [
     BrowserModule,
