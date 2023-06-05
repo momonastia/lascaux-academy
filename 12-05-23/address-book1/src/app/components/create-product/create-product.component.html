@@ -7,8 +7,8 @@ class="p-3 d-flex flex-column align-items-center"
   type="text"
   formControlName="title"
   class="form-control w-75"
-  placeholder="Product name">
-
+  placeholder="Product name"
+  appFocus>
   <p
   class="text-danger mt-2 fs-6"
   *ngIf="title?.errors?.minlength && title?.touched">Enter at least 6 characters. Now {{ title.value.length }}</p>
