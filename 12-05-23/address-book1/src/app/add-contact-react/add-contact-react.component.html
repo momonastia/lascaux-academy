@@ -13,6 +13,10 @@
      >
    <p *ngIf="
    contactForm.controls['firstName'].errors?.required">Compilare</p>
+   <p *ngIf="
+   contactForm.controls['firstName'].errors?.upperCase">Deve essere maiuscolo</p>
+
+   {{ contactForm.controls['firstName'].errors | json }}
 
    <label for="lastName">Last name</label>
    <input
@@ -21,6 +25,9 @@
      class="form-control"
      type="text"
      >
+
+  {{ contactForm.controls['lastName'].errors | json }}
+  <p *ngIf="contactForm.controls['lastName'].status == 'PENDING'">...</p>
 
     <div formGroupName="details">
 
@@ -54,6 +61,31 @@
      value="N"
     >
      </div>
+
+     <button class="btn btn-secondary m-4" (click)="addLanguage()">Agguingi lingua</button>
+     <!-- For language -->
+     <div formArrayName="languageSkills">
+     <div *ngFor="let language of languageSkill.controls, index as i" class="form-check m-3">
+      <!-- {{ i }} -->
+       <div [formGroupName]="i">
+         <input class="form-control" formControlName="language" type="lang" id="languageLevel" placeholder="Write language">
+          <select class="form-select m-2" formControlName="level" type="select" value="" id="">
+            <option [ngValue]="0">A1</option>
+            <option [ngValue]="1">A2</option>
+            <option [ngValue]="2">A3</option>
+            <option [ngValue]="3">B1</option>
+            <option [ngValue]="4">B2</option>
+            <option [ngValue]="5">B3</option>
+            <option [ngValue]="6">C1</option>
+            <option [ngValue]="7">C2</option>
+            <option [ngValue]="8">C3</option>
+          </select>
+
+       </div>
+       <button (click)="removeLanguage(i)">X</button>
+     </div>
+     <button *ngIf="languageSkill.controls.length" (click)="removeAllLanguages()">Remove all</button>
+    </div>
 
      <label for="birthDate">Birth date</label>
      <input
