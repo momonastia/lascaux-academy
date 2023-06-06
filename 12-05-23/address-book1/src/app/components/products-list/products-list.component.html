@@ -9,11 +9,19 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
-<div class="d-flex flex-row overflow-auto" *ngIf="products$ | async as products">
+
+<!-- Version with stream before -->
+<!-- <div class="d-flex flex-row overflow-auto" *ngIf="products$ | async as products">
   <app-product
    *ngFor="let product of products | filterProducts: term ; let i = index"
    [product]="product">
-  </app-product>
+  </app-product> -->
+
+  <div class="d-flex flex-row overflow-auto" *ngIf="productService.products">
+    <app-product
+     *ngFor="let product of productService.products | filterProducts: term ; let i = index"
+     [product]="product">
+    </app-product>
 
 <!-- <app-product
 *ngFor="let product of products; let i = index"
