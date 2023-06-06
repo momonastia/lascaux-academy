@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IProduct } from '../../models/product';
 import { ProductService } from '../../services/products.service';
 import { Observable, Subscription, tap } from 'rxjs';
+import { ModalService } from 'src/app/services/modal.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   products$: Observable<IProduct[]>
 
   constructor(
-    private productService: ProductService) {}
+    private productService: ProductService,
+    public modalService: ModalService) {}
 
   ngOnInit(): void {
     this.loading = true;

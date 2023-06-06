@@ -2,6 +2,7 @@
 <button routerLink="/" class="btn btn-secondary m-4">Back to main page</button>
 <!-- <app-product [product]="products[0]"></app-product>
 <app-product [product]="products[1]"></app-product> -->
+<button type="button" class="btn btn-success rounded-circle m-4" (click)="modalService.open()">+</button>
 <app-filter-products (termChange)="onTermChange($event)"></app-filter-products>
 <div *ngIf="loading" class="text-center text-lg">
   <div class="spinner-border text-light" role="status">
@@ -21,7 +22,9 @@
 
 </div>
 
-<app-modal title="Create new Product">
+<app-modal *ngIf="modalService.isVisible$ | async" title="Create new Product">
   <app-create-product></app-create-product>
 </app-modal>
+
+
 

@@ -27,6 +27,10 @@ export class ProductService {
       this.errorService.handle(error.message)
       return throwError(() => error.message)
     }
+
+    createProduct(product: IProduct): Observable<IProduct> {
+      return this.http.post<IProduct>(this.configUrl, product)
+    }
 }
 
 

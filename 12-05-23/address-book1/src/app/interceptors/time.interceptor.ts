@@ -20,7 +20,7 @@ export class TimeInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<unknown>> {
 
       const currentTime = moment();
-      console.log(currentTime)
+      /* console.log(currentTime) */
 
       const requestCopy = request.clone({
         headers: request.headers.set("Request-time", "time here")
