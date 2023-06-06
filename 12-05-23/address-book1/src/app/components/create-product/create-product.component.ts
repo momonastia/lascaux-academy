@@ -31,7 +31,7 @@ export class CreateProductComponent {
     console.log(this.form.value)
 
     this.productService.createProduct({
-      title: this.form.value as string,
+      title: this.form.value.title as string,
       price: 13.5,
       description: 'lorem ipsum set',
       image: 'https://i.pravatar.cc',
