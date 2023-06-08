@@ -1,0 +1,10 @@
+.nav-custom {
+  box-shadow: 0 0 5px rgba(213, 213, 213, 0.2);
+  border-radius: 5px;
+}
+
+.active {
+  font-weight: 600;
+  box-shadow: 0 0 5px rgba(213, 213, 213, 0.2);
+  border-radius: 5px;
+}

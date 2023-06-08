@@ -1,13 +1,16 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary nav-custom">
   <div class="container-fluid">
     <h2 class="navbar-brand m-2 text-light">{{ title | titlecase }}</h2>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" routerLink="/">Home</a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-light" aria-current="page" routerLink="/contacts">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" routerLink="/products">Products</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-light" aria-current="page" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-light" aria-current="page" routerLink="/about">About</a>
         </li>
       </ul>
     </div>
