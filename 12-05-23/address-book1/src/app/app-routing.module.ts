@@ -6,6 +6,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { TypeCheckGuard } from './guards/type-check.guard';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { AddContactReactComponent } from './add-contact-react/add-contact-react.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: "add-contact-react",
     component: AddContactReactComponent,
+  },
+  {
+    path: "about",
+    component: AboutPageComponent,
   },
   {
     path: "**",
