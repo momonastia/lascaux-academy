@@ -26,6 +26,10 @@ import { FocusDirective } from './directives/focus.directive';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +57,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true},
