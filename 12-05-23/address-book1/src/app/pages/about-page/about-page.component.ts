@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { from, merge, throwError } from 'rxjs';
-import { catchError, filter, map } from 'rxjs/operators';
+import { from, merge, EMPTY, empty, combineLatest} from 'rxjs';
+import { catchError, filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-about-page',
@@ -20,6 +20,15 @@ export class AboutPageComponent implements OnInit {
       console.log(value);
       this.mergedValues.push(value)
     });
+
+  /* Комбинация с определенной логикой */
+
+  source3 = from([1, 2, 3, 4, 5]);
+  source4 = from(['A', 'B', 'C', 'D', 'E']);
+
+  combined = combineLatest([this.source3, this.source4])
+  .subscribe
+  (([number, letter]) => console.log(number, letter));
 
   /* Фильтрация */
 
@@ -60,21 +69,8 @@ export class AboutPageComponent implements OnInit {
         ),
       catchError(error => {
          console.log('Error:', error.message);
-         return from([]);
+         return EMPTY;
         })
       ).subscribe(value => console.log(value));
   }
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
