@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { from, merge } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { from, merge, throwError } from 'rxjs';
+import { catchError, filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about-page',
@@ -36,6 +36,10 @@ export class AboutPageComponent implements OnInit {
 
   numbersToTransform = from([1, 2, 3, 4, 5]);
 
+  /* Обработка ошибок */
+
+  numbersForErrorHandle = from([1, 2, 3, 4, 5]);
+
   ngOnInit() {
 
     this.numbers.pipe(
@@ -45,7 +49,25 @@ export class AboutPageComponent implements OnInit {
     this.numbersToTransform.pipe(
       map(number => number * 2)
     ).subscribe(value => console.log("Трансформация чисел", value))
-}
+
+    this.numbersForErrorHandle.pipe(
+      map(number => {
+        if (number === 3) {
+           throw new Error ("Error occurred");
+          }
+        return number;
+         }
+        ),
+      catchError(error => {
+         console.log('Error:', error.message);
+         return from([]);
+        })
+      ).subscribe(value => console.log(value));
+  }
+
+
+
+
 }
 
 
