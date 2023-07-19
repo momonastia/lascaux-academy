@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from, merge, EMPTY, empty, combineLatest} from 'rxjs';
+import { from, merge, EMPTY, empty, combineLatest, concat} from 'rxjs';
 import { catchError, filter, map} from 'rxjs/operators';
 
 @Component({
@@ -48,6 +48,15 @@ export class AboutPageComponent implements OnInit {
   /* Обработка ошибок */
 
   numbersForErrorHandle = from([1, 2, 3, 4, 5]);
+
+  /* Конкатенация потоков */
+
+  numbers1$ = from([1, 2, 3]);
+  numbers2$ = from([4, 5, 6]);
+
+  concated$ = concat(this.numbers1$, this.numbers2$)
+  .subscribe
+  ((value) => console.log("Конкатенация потоков", value));
 
   ngOnInit() {
 
