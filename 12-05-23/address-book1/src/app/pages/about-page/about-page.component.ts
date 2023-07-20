@@ -58,6 +58,20 @@ export class AboutPageComponent implements OnInit {
   .subscribe
   ((value) => console.log("Конкатенация потоков", value));
 
+  /* Фильтрация и трансформация массива объектов */
+
+  users = [
+    { id: 1, name: 'John', age: 25 },
+    { id: 2, name: 'Jane', age: 30 },
+    { id: 3, name: 'Mike', age: 22 },
+    { id: 4, name: 'Emily', age: 28 },
+  ];
+
+  users$ = from(this.users)
+
+
+
+
   ngOnInit() {
 
     this.numbers.pipe(
@@ -81,5 +95,11 @@ export class AboutPageComponent implements OnInit {
          return EMPTY;
         })
       ).subscribe(value => console.log(value));
+
+    this.users$.pipe(
+      filter(user => user.age > 25),
+      map (user => user.name)
+    ).subscribe(user => console.log(user))
+
   }
 }
