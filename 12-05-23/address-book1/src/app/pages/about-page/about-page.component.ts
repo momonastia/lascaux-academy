@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { from, merge, EMPTY, empty, combineLatest, concat} from 'rxjs';
-import { catchError, filter, map} from 'rxjs/operators';
+import { catchError, delay, filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-about-page',
@@ -69,7 +69,13 @@ export class AboutPageComponent implements OnInit {
 
   users$ = from(this.users)
 
+  /* Объединение потоков с задержкой */
 
+  numbers5$ = from([1, 2, 3]);
+  numbers6$ = from([4, 5, 6]).pipe(delay(2000));
+
+  merged$ = merge(this.numbers5$, this.numbers6$)
+  .subscribe ((value) => console.log("Объединение потоков с задержкой", value));
 
 
   ngOnInit() {
