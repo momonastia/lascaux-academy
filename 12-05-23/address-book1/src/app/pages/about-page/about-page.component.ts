@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from, merge, EMPTY, empty, combineLatest, concat} from 'rxjs';
+import { from, merge, EMPTY, Subject, combineLatest, concat} from 'rxjs';
 import { catchError, delay, filter, map} from 'rxjs/operators';
 
 @Component({
@@ -77,6 +77,10 @@ export class AboutPageComponent implements OnInit {
   merged$ = merge(this.numbers5$, this.numbers6$)
   .subscribe ((value) => console.log("Объединение потоков с задержкой", value));
 
+  /* Отправка данных в поток с помощью Subject */
+
+  data$: Subject<number> = new Subject<number>();
+
 
   ngOnInit() {
 
@@ -107,5 +111,10 @@ export class AboutPageComponent implements OnInit {
       map (user => user.name)
     ).subscribe(user => console.log(user))
 
+
+    this.data$.subscribe(value => console.log("next", value))
+    this.data$.next(1);
+    this.data$.next(2);
+    this.data$.next(3);
   }
 }
